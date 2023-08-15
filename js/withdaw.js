@@ -14,21 +14,32 @@ document.getElementById('btn-withdraw').addEventListener('click',function(){
 const withdrawField = document.getElementById('withdraw-field');
 const newWithdrawAmountString = withdrawField.value;
 const newWithdrawAmount = parseFloat(newWithdrawAmountString);
+// step 7
+withdrawField.value = '';
+
+if(isNaN(newWithdrawAmount)){
+    alert('Please provide a valid amount');
+    return;
+}
 // step: 3
 const withdrawTotalEliment = document.getElementById('withdraw-total');
 const previusWithdrawTotalString = withdrawTotalEliment.innerText;
 const previusWithdrawTotal = parseFloat(previusWithdrawTotalString);
-// step: 4
-const currentwithdrawTotal = previusWithdrawTotal + newWithdrawAmount;
-withdrawTotalEliment.innerText = currentwithdrawTotal;
+
 // step: 5
 const balanceTotalEliment = document.getElementById('balance-total')
 const previusBalanceTotalString = balanceTotalEliment.innerText;
 const previusBalanceTotal = parseFloat(previusBalanceTotalString);
 // console.log(previusBalanceTotal);
+
+if(newWithdrawAmount > previusBalanceTotal){
+    alert('Not enough balance')
+    return;
+}
+// step: 4
+const currentwithdrawTotal = previusWithdrawTotal + newWithdrawAmount;
+withdrawTotalEliment.innerText = currentwithdrawTotal;
 // step 6
 const newBalanceTotal = previusBalanceTotal - newWithdrawAmount;
 balanceTotalEliment.innerText = newBalanceTotal
-// step 7
-withdrawField.value = '';
 })
