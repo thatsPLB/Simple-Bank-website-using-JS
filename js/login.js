@@ -10,7 +10,7 @@ document.getElementById('btn-submit').addEventListener('click',function(){
     // console.log(password);
     // step 4: varify rmail and pass
     if(email === 'sahaplabon66@gmail.com' && password === 'secret'){
-        console.log('valid user')
+        window.location.href = 'bank.html'
 
     }
     else{
